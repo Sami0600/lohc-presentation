@@ -1,11 +1,32 @@
 {
   "name": "lohc-presentation",
   "version": "1.0.0",
-  "description": "Liquid Organic Hydrogen Carriers Graduate Seminar Presentation",
+  "description": "Liquid Organic Hydrogen Carriers (LOHCs) Graduate Seminar Presentation Generator",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "start": "node index.js",
-    "build": "node index.js"
+    "build": "node index.js",
+    "dev": "node index.js",
+    "generate": "node index.js LOHC_Presentation_2025.pptx"
+  },
+  "keywords": [
+    "LOHC",
+    "hydrogen",
+    "energy storage",
+    "hydrogen carriers",
+    "pptx",
+    "presentation",
+    "pptxgen-js",
+    "renewable energy",
+    "catalysis",
+    "chemical engineering"
+  ],
+  "author": "Graduate Seminar - University of Naples Federico II",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
   },
   "dependencies": {
     "pptxgenjs": "^3.12.0",
@@ -13,5 +34,14 @@
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.0",
     "sharp": "^0.33.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sami0600/lohc-presentation.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Sami0600/lohc-presentation/issues"
+  },
+  "homepage": "https://github.com/Sami0600/lohc-presentation#readme"
 }
