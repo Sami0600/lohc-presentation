@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LOHC – Liquid Organic Hydrogen Carriers</title>
+
+    <!-- Reveal.js (bundled locally) -->
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/white.css" id="theme" />
+
+    <style>
+      :root {
+        --accent: #0072b5;
+        --accent-light: #e6f2fb;
+        --green: #2e8b57;
+        --green-light: #e8f5ee;
+        --amber: #e07b00;
+        --amber-light: #fff3e0;
+        --gray: #555;
+      }
+
+      .reveal h1,
+      .reveal h2,
+      .reveal h3 {
+        color: var(--accent);
+        text-transform: none;
+        letter-spacing: -0.01em;
+      }
+
+      .reveal .subtitle {
+        color: var(--gray);
+        font-size: 1.1em;
+        margin-top: 0.2em;
+      }
+
+      /* Slide-level utility classes */
+      .card-grid {
+        display: grid;
+        gap: 0.8em;
+      }
+      .card-grid.cols-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+      .card-grid.cols-3 {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      .card {
+        background: var(--accent-light);
+        border-left: 4px solid var(--accent);
+        border-radius: 6px;
+        padding: 0.6em 0.9em;
+        font-size: 0.82em;
+        text-align: left;
+      }
+      .card.green {
+        background: var(--green-light);
+        border-color: var(--green);
+      }
+      .card.amber {
+        background: var(--amber-light);
+        border-color: var(--amber);
+      }
+
+      .card strong {
+        display: block;
+        margin-bottom: 0.25em;
+        font-size: 1em;
+      }
+
+      .pill {
+        display: inline-block;
+        background: var(--accent);
+        color: #fff;
+        border-radius: 999px;
+        padding: 0.15em 0.65em;
+        font-size: 0.72em;
+        vertical-align: middle;
+        margin-left: 0.3em;
+      }
+      .pill.green {
+        background: var(--green);
+      }
+      .pill.amber {
+        background: var(--amber);
+      }
+
+      .flow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5em;
+        flex-wrap: wrap;
+        font-size: 0.8em;
+      }
+      .flow-box {
+        background: var(--accent-light);
+        border: 2px solid var(--accent);
+        border-radius: 8px;
+        padding: 0.5em 0.9em;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+      .flow-box.green {
+        background: var(--green-light);
+        border-color: var(--green);
+      }
+      .arrow {
+        font-size: 1.3em;
+        color: var(--gray);
+      }
+
+      table.compare {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.72em;
+        margin-top: 0.5em;
+      }
+      table.compare th {
+        background: var(--accent);
+        color: #fff;
+        padding: 0.4em 0.6em;
+        text-align: center;
+      }
+      table.compare td {
+        padding: 0.4em 0.6em;
+        border-bottom: 1px solid #ddd;
+        text-align: center;
+      }
+      table.compare tr:nth-child(even) td {
+        background: #f4f9fd;
+      }
+
+      .big-stat {
+        font-size: 2.4em;
+        font-weight: 700;
+        color: var(--accent);
+        line-height: 1;
+      }
+      .big-stat-label {
+        font-size: 0.75em;
+        color: var(--gray);
+      }
+      .stat-row {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 1em;
+        margin-top: 0.8em;
+      }
+      .stat-item {
+        text-align: center;
+      }
+
+      .reveal ul,
+      .reveal ol {
+        font-size: 0.82em;
+        line-height: 1.7;
+      }
+
+      .source {
+        font-size: 0.5em;
+        color: #aaa;
+        margin-top: 1em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <!-- ── 1. Title slide ─────────────────────────────────────── -->
+        <section>
+          <h1>LOHC</h1>
+          <p class="subtitle">Liquid Organic Hydrogen Carriers</p>
+          <p class="subtitle" style="font-size:0.85em; margin-top:1em;">
+            A pathway to safe, high-density hydrogen storage &amp; transport
+          </p>
+          <hr style="width:40%; border-color: var(--accent); margin:1.2em auto;" />
+          <p style="font-size:0.65em; color:var(--gray);">
+            Presented by Sami · 2026
+          </p>
+        </section>
+
+        <!-- ── 2. Agenda ──────────────────────────────────────────── -->
+        <section>
+          <h2>Agenda</h2>
+          <ol style="max-width:680px; margin:0.8em auto 0; font-size:0.9em; line-height:1.75; text-align:left;">
+            <li>The hydrogen storage challenge</li>
+            <li>What are LOHCs?</li>
+            <li>Hydrogenation &amp; dehydrogenation</li>
+            <li>Key LOHC materials</li>
+            <li>LOHC vs. competing technologies</li>
+            <li>Applications &amp; projects</li>
+            <li>Challenges &amp; outlook</li>
+          </ol>
+        </section>
+
+        <!-- ── 3. Hydrogen storage challenge ─────────────────────── -->
+        <section>
+          <h2>The Hydrogen Storage Challenge</h2>
+          <div class="card-grid cols-3" style="margin-top:0.8em;">
+            <div class="card amber">
+              <strong>⚡ Low volumetric density</strong>
+              H₂ gas at STP: 0.09 kg/m³ — the least dense gas
+            </div>
+            <div class="card amber">
+              <strong>🔥 Flammability</strong>
+              Wide flammability range (4–75 vol%), low ignition energy
+            </div>
+            <div class="card amber">
+              <strong>❄️ Cryogenic trade-offs</strong>
+              Liquid H₂ requires −253 °C; significant energy penalty
+            </div>
+          </div>
+          <div class="card-grid cols-2" style="margin-top:0.8em;">
+            <div class="card">
+              <strong>🏋️ High-pressure cylinders</strong>
+              700 bar tanks add weight and require advanced materials
+            </div>
+            <div class="card">
+              <strong>🌐 Infrastructure gap</strong>
+              Dedicated H₂ pipelines and refuelling stations largely absent
+            </div>
+          </div>
+          <p class="source">Source: IEA, "The Future of Hydrogen" (2019)</p>
+        </section>
+
+        <!-- ── 4. What is LOHC? ───────────────────────────────────── -->
+        <section>
+          <h2>What Are LOHCs?</h2>
+          <p style="font-size:0.82em; max-width:700px; margin:0.4em auto 1em;">
+            Liquid Organic Hydrogen Carriers are organic molecules that can
+            <strong>reversibly bind and release hydrogen</strong> through
+            catalytic reactions at moderate conditions.
+          </p>
+          <div class="card-grid cols-3">
+            <div class="card green">
+              <strong>🧪 Liquid at ambient conditions</strong>
+              Handled with standard oil/fuel infrastructure
+            </div>
+            <div class="card green">
+              <strong>♻️ Fully reversible</strong>
+              Same carrier molecule is reused indefinitely
+            </div>
+            <div class="card green">
+              <strong>📦 High energy density</strong>
+              Dibenzyltoluene (DBT) stores ~6.2 wt% H₂
+            </div>
+          </div>
+        </section>
+
+        <!-- ── 5. Hydrogenation / Dehydrogenation ────────────────── -->
+        <section>
+          <h2>Hydrogenation &amp; Dehydrogenation</h2>
+          <div class="flow" style="margin-top:1.2em;">
+            <div class="flow-box">H₂ (source)</div>
+            <span class="arrow">→</span>
+            <div class="flow-box">Hydrogenation<br/><small>150–250 °C, catalyst</small></div>
+            <span class="arrow">→</span>
+            <div class="flow-box green">H₂-rich LOHC</div>
+            <span class="arrow">→</span>
+            <div class="flow-box">Transport / Storage</div>
+          </div>
+          <div class="flow" style="margin-top:1em;">
+            <div class="flow-box">H₂-rich LOHC</div>
+            <span class="arrow">→</span>
+            <div class="flow-box">Dehydrogenation<br/><small>250–320 °C, catalyst</small></div>
+            <span class="arrow">→</span>
+            <div class="flow-box green">H₂ (end use)</div>
+            <span class="arrow">+</span>
+            <div class="flow-box">Lean LOHC<br/><small>(returned for reuse)</small></div>
+          </div>
+          <p style="font-size:0.7em; color:var(--gray); margin-top:1em;">
+            Both steps use heterogeneous Pt- or Pd-based catalysts; reactions are
+            exothermic (hydrogenation) and endothermic (dehydrogenation).
+          </p>
+        </section>
+
+        <!-- ── 6. Key LOHC materials ─────────────────────────────── -->
+        <section>
+          <h2>Key LOHC Materials</h2>
+          <table class="compare">
+            <thead>
+              <tr>
+                <th>Carrier</th>
+                <th>H₂ capacity (wt%)</th>
+                <th>Dehydro­genation T (°C)</th>
+                <th>Flash point (°C)</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Dibenzyltoluene (DBT/H0-DBT)</strong></td>
+                <td>6.2</td>
+                <td>270–320</td>
+                <td>&gt; 200</td>
+                <td><span class="pill green">Commercial</span></td>
+              </tr>
+              <tr>
+                <td>Toluene / Methylcyclohexane (TOL/MCH)</td>
+                <td>6.2</td>
+                <td>300–350</td>
+                <td>4 (toluene)</td>
+                <td><span class="pill amber">Pilot</span></td>
+              </tr>
+              <tr>
+                <td>N-ethylcarbazole (NEC)</td>
+                <td>5.8</td>
+                <td>160–200</td>
+                <td>&gt; 100</td>
+                <td><span class="pill">Research</span></td>
+              </tr>
+              <tr>
+                <td>Perhydro-dibenzyltoluene (H18-DBT)</td>
+                <td>6.2</td>
+                <td>270–310</td>
+                <td>&gt; 200</td>
+                <td><span class="pill green">Commercial</span></td>
+              </tr>
+              <tr>
+                <td>1,2-Dihydro-1,2-azaborine</td>
+                <td>~4.7</td>
+                <td>80–120</td>
+                <td>—</td>
+                <td><span class="pill">Research</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="source">Sources: Hydrogenious LOHC Technologies, Chiyoda Corp., peer-reviewed literature</p>
+        </section>
+
+        <!-- ── 7. LOHC vs. competing technologies ────────────────── -->
+        <section>
+          <h2>LOHC vs. Competing Technologies</h2>
+          <table class="compare">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Compressed H₂<br/>(700 bar)</th>
+                <th>Liquid H₂<br/>(−253 °C)</th>
+                <th>Ammonia</th>
+                <th>LOHC (DBT)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Gravimetric density</td>
+                <td>~5.7 wt%</td>
+                <td>~100 wt%</td>
+                <td>17.7 wt%</td>
+                <td>6.2 wt%</td>
+              </tr>
+              <tr>
+                <td>Volumetric density (kg H₂/L)</td>
+                <td>0.040</td>
+                <td>0.071</td>
+                <td>0.121</td>
+                <td>0.057</td>
+              </tr>
+              <tr>
+                <td>Storage pressure</td>
+                <td>700 bar</td>
+                <td>1 bar</td>
+                <td>10 bar</td>
+                <td>1 bar</td>
+              </tr>
+              <tr>
+                <td>Existing infrastructure</td>
+                <td>Limited</td>
+                <td>None</td>
+                <td>Extensive</td>
+                <td>Oil-compatible</td>
+              </tr>
+              <tr>
+                <td>Safety</td>
+                <td>Moderate risk</td>
+                <td>Moderate risk</td>
+                <td>Toxic</td>
+                <td>Low risk</td>
+              </tr>
+              <tr>
+                <td>Round-trip efficiency</td>
+                <td>~90%</td>
+                <td>~70%</td>
+                <td>~45%</td>
+                <td>~60–70%</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- ── 8. Applications ───────────────────────────────────── -->
+        <section>
+          <h2>Applications &amp; Real-World Projects</h2>
+          <div class="card-grid cols-2" style="margin-top:0.6em;">
+            <div class="card">
+              <strong>🚢 Intercontinental H₂ export</strong>
+              Chiyoda's SPERA Hydrogen: Brunei → Japan pilot (2019–2020),
+              700 Nm³/h dehydrogenation plant in Kawasaki
+            </div>
+            <div class="card green">
+              <strong>🏭 Industrial H₂ supply</strong>
+              Hydrogenious LOHC Technologies: modular StorageBOX / ReleaseBOX
+              systems, replacing cylinder & tube-trailer logistics
+            </div>
+            <div class="card">
+              <strong>🔋 Grid-scale energy storage</strong>
+              Coupling electrolysers to LOHC for long-duration storage and
+              seasonal shifting of renewable electricity
+            </div>
+            <div class="card green">
+              <strong>⛽ Fuel-cell mobility</strong>
+              On-board or depot-based LOHC release feeding H₂ to FCEVs,
+              buses, and maritime vessels
+            </div>
+          </div>
+          <p class="source">Sources: Chiyoda Corp. (2020), Hydrogenious LOHC Technologies GmbH</p>
+        </section>
+
+        <!-- ── 9. Key statistics ──────────────────────────────────── -->
+        <section>
+          <h2>LOHC by the Numbers</h2>
+          <div class="stat-row">
+            <div class="stat-item">
+              <div class="big-stat">6.2 wt%</div>
+              <div class="big-stat-label">H₂ capacity of DBT</div>
+            </div>
+            <div class="stat-item">
+              <div class="big-stat">&gt;200 °C</div>
+              <div class="big-stat-label">Flash point (DBT) — low fire risk</div>
+            </div>
+            <div class="stat-item">
+              <div class="big-stat">1 bar</div>
+              <div class="big-stat-label">Ambient storage pressure</div>
+            </div>
+          </div>
+          <div class="stat-row" style="margin-top:1.2em;">
+            <div class="stat-item">
+              <div class="big-stat">~60–70%</div>
+              <div class="big-stat-label">Round-trip efficiency</div>
+            </div>
+            <div class="stat-item">
+              <div class="big-stat">∞</div>
+              <div class="big-stat-label">Carrier reuse cycles (no degradation)</div>
+            </div>
+            <div class="stat-item">
+              <div class="big-stat">~10 USD/kg H₂</div>
+              <div class="big-stat-label">Target delivery cost (long distance)</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── 10. Challenges ────────────────────────────────────── -->
+        <section>
+          <h2>Challenges &amp; Open Research Questions</h2>
+          <div class="card-grid cols-2" style="margin-top:0.6em;">
+            <div class="card amber">
+              <strong>🌡️ Dehydrogenation energy demand</strong>
+              Endothermic release requires 40–60 kJ/mol H₂; waste heat
+              integration is critical for efficiency
+            </div>
+            <div class="card amber">
+              <strong>⚗️ Catalyst durability</strong>
+              Pt/Pd catalysts are expensive; sintering and coking over
+              thousands of cycles must be minimised
+            </div>
+            <div class="card amber">
+              <strong>🔄 Round-trip efficiency</strong>
+              ~60–70% is lower than compressed-H₂ pathways; improvement needed
+              for cost-competitive green-H₂ chains
+            </div>
+            <div class="card amber">
+              <strong>📜 Standardisation &amp; regulation</strong>
+              No unified international standards for LOHC purity, handling, or
+              safe-transport classification yet
+            </div>
+          </div>
+        </section>
+
+        <!-- ── 11. Outlook ───────────────────────────────────────── -->
+        <section>
+          <h2>Outlook &amp; Future Directions</h2>
+          <ul style="max-width:680px; margin:0.6em auto 0;">
+            <li><strong>Lower-temperature carriers</strong> — azaborines and
+              ionic-liquid LOHCs aiming for &lt;150 °C release</li>
+            <li><strong>Heat integration</strong> — coupling dehydrogenation
+              reactors with industrial waste heat or fuel cells</li>
+            <li><strong>Cost reduction</strong> — non-precious-metal catalysts
+              (Ni, Co-based) and reactor miniaturisation</li>
+            <li><strong>Scale-up</strong> — MW- to GW-scale electrolyser +
+              LOHC projects in Norway, Australia, Chile, and Middle East</li>
+            <li><strong>Dual use</strong> — LOHC as both energy carrier
+              <em>and</em> thermal energy storage medium</li>
+          </ul>
+        </section>
+
+        <!-- ── 12. Summary ───────────────────────────────────────── -->
+        <section>
+          <h2>Summary</h2>
+          <div class="card-grid cols-3" style="margin-top:0.8em;">
+            <div class="card green">
+              <strong>✅ Safe &amp; easy to handle</strong>
+              Liquid at ambient conditions; compatible with oil logistics
+            </div>
+            <div class="card green">
+              <strong>✅ Reusable carrier</strong>
+              No carrier consumption; closed-loop cycle
+            </div>
+            <div class="card green">
+              <strong>✅ Scalable</strong>
+              Modular systems from kW to GW; proven pilot plants
+            </div>
+            <div class="card amber">
+              <strong>⚠️ Energy penalty</strong>
+              Heat required for H₂ release; ~30–40% efficiency loss
+            </div>
+            <div class="card amber">
+              <strong>⚠️ Cost</strong>
+              Catalyst and reactor costs still high at small scales
+            </div>
+            <div class="card">
+              <strong>🔭 Promising niche</strong>
+              Long-distance / long-duration H₂ transport where safety
+              and infrastructure reuse matter most
+            </div>
+          </div>
+        </section>
+
+        <!-- ── 13. Thank you ─────────────────────────────────────── -->
+        <section>
+          <h2>Thank You</h2>
+          <p style="font-size:0.9em; margin-top:0.8em;">
+            Questions &amp; Discussion
+          </p>
+          <hr style="width:30%; border-color:var(--accent); margin:1.2em auto;" />
+          <p style="font-size:0.65em; color:var(--gray);">
+            Repository:
+            <a href="https://github.com/Sami0600/lohc-presentation" style="color:var(--accent);">
+              github.com/Sami0600/lohc-presentation
+            </a>
+          </p>
+          <div style="margin-top:1.2em; font-size:0.7em; color:var(--gray);">
+            <strong>Key references</strong><br/>
+            IEA, "The Future of Hydrogen" (2019) ·
+            Hydrogenious LOHC Technologies GmbH ·
+            Chiyoda Corporation SPERA Hydrogen ·
+            Teichmann <em>et al.</em>, Energy Environ. Sci. (2011)
+          </div>
+        </section>
+
+      </div><!-- /slides -->
+    </div><!-- /reveal -->
+
+    <script src="dist/reveal.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        slideNumber: true,
+        transition: "slide",
+        transitionSpeed: "fast",
+        controls: true,
+        progress: true,
+        center: true,
+        width: 960,
+        height: 620,
+      });
+    </script>
+  </body>
+</html>
